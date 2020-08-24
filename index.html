@@ -7,6 +7,11 @@
 </head>
 <body>
     <script>
+        let options = {
+            "rock" : "paper",
+            "paper" : "scissors",
+            "scissors" : "rock"
+        }
         function computerPlay() {
             var resultInt = Math.floor(Math.random() * 3)
             var result
@@ -32,30 +37,10 @@
             var winner
             if (playerSelection === computerSelection){
                 return "It's a draw! You both chose " + playerSelection 
-            } else if (playerSelection === "rock"){
-                if (computerSelection === "paper"){
-                    winner = "computer"
-                } else {
-                    winner = "player"
-                }
-            } else if (playerSelection === "paper"){
-                if (computerSelection === "scissors") {
-                    winner = "computer"
-                } else {
-                    winner = "player"
-                }
-            } else {
-                if (computerSelection === "rock") {
-                    winner = "computer"
-                } else {
-                    winner = "player"
-                }
-            }
-
-            if (winner === "player"){
-                return "You won! " + playerSelection + " beats " + computerSelection
-            } else {
+            } else if (options[playerSelection] === computerSelection){
                 return "The computer won! " + computerSelection + " beats " + playerSelection
+            } else {
+                return "You won! " + playerSelection + " beats " + computerSelection
             }
         }
 
