@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            var resultInt = Math.floor(Math.random() * 3)
+            var result
+            if (resultInt == 0){
+                result = "rock"
+            } else if (resultInt == 1){
+                result = "paper"
+            } else {
+                result = "scissors"
+            }
+            return result
+        }
+
+        function playerPlay(){
+            var result = prompt("Input your choice:").toLowerCase()
+            while (result != "rock" && result != "paper" && result != "scissors"){
+                result = prompt("Please choose one between rock, paper and scissors:").toLowerCase()
+            }
+            return result
+        }
+        
+        function playRound(playerSelection, computerSelection){
+            var winner
+            if (playerSelection === computerSelection){
+                return "It's a draw! You both chose " + playerSelection 
+            } else if (playerSelection === "rock"){
+                if (computerSelection === "paper"){
+                    winner = "computer"
+                } else {
+                    winner = "player"
+                }
+            } else if (playerSelection === "paper"){
+                if (computerSelection === "scissors") {
+                    winner = "computer"
+                } else {
+                    winner = "player"
+                }
+            } else {
+                if (computerSelection === "rock") {
+                    winner = "computer"
+                } else {
+                    winner = "player"
+                }
+            }
+
+            if (winner === "player"){
+                return "You won! " + playerSelection + " beats " + computerSelection
+            } else {
+                return "The computer won! " + computerSelection + " beats " + playerSelection
+            }
+        }
+
+        function game(){
+            var i
+            for (i = 0; i < 5; i++){
+                var playerSelection = playerPlay()
+                var computerSelection = computerPlay()
+
+                console.log(playRound(playerSelection, computerSelection))
+            }
+        }
+        
+        game()
+    </script>
+</body>
+</html>
